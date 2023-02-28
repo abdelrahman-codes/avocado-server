@@ -1,0 +1,11 @@
+const router = require('express').Router();
+
+const validation = require('../../../server-build/src/middlewares/validation');
+const { addService, getService, updateService, deleteService } = require('../controllers/service');
+const { addServiceValidation, updateServiceValidation } = require('../validations/service.validation');
+
+router.get('/', getService)
+router.post('/', validation(addServiceValidation), addService)
+router.put('/:_id', validation(updateServiceValidation), updateService)
+router.delete('/:_id', deleteService)
+module.exports = router;
