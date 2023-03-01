@@ -1,4 +1,4 @@
-const { Section } = require("../models");
+const { Country } = require("../models");
 const { v4: uuidv4 } = require('uuid')
 const multer = require('multer')
 const fs = require("fs");
@@ -23,7 +23,7 @@ function checkFileType(file, cb) {
 const storage = multer.diskStorage({
     //multers disk storage settings
     destination: (req, file, cb) => {
-        cb(null, "./public/section");
+        cb(null, "./public/country");
     },
     filename: (req, file, cb) => {
         const ext = file.mimetype.split("/")[1];
@@ -59,7 +59,7 @@ const uploadPic = (req, res, next) => {
 };
 
 function deletePhoto(photo) {
-    fs.unlink("./public/section/" + photo, (err) => {
+    fs.unlink("./public/country/" + photo, (err) => {
         if (err) {
             console.error(err);
             return;
@@ -67,10 +67,10 @@ function deletePhoto(photo) {
     });
 }
 
-const addSection = async (req, res) => {
+const addCountry = async (req, res) => {
     try {
-        const section = new Section(req.body);
-        await section.save();
+        const country = new Country(req.body);
+        await country.save();
         res.status(200).json({ message: "saved successfully" })
 
     } catch (error) {
@@ -78,10 +78,10 @@ const addSection = async (req, res) => {
     }
 }
 
-const getSections = async (req, res) => {
+const getCountrys = async (req, res) => {
     try {
-        const section = await Section.find();
-        res.status(200).json({ section })
+        const countrys = await Country.find();
+        res.status(200).json({ countrys })
 
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
@@ -89,25 +89,12 @@ const getSections = async (req, res) => {
 
 }
 
-const updateSection = async (req, res) => {
+const deleteCountry = async (req, res) => {
     try {
         const { _id } = req.params;
-        const section = await Section.findOneAndUpdate({ _id }, req.body);
-        if (section)
-            res.status(200).json({ message: "updated successfully" })
-        else
-            res.status(404).json({ error: "Not Found" })
-    } catch (error) {
-        res.status(500).json({ error: "Internal Server Error" })
-    }
-}
-
-const deleteSection = async (req, res) => {
-    try {
-        const { _id } = req.params;
-        const section = await Section.findOneAndRemove({ _id });
-        if (section) {
-            deletePhoto(section.pic)
+        const country = await Country.findOneAndRemove({ _id });
+        if (country) {
+            deletePhoto(country.pic)
             res.status(200).json({ message: "Deleted" })
         }
         else {
@@ -120,9 +107,8 @@ const deleteSection = async (req, res) => {
 
 
 module.exports = {
-    addSection,
+    addCountry,
     uploadPic,
-    getSections,
-    updateSection,
-    deleteSection,
+    getCountrys,
+    deleteCountry,
 }

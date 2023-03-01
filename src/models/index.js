@@ -3,3 +3,7 @@ module.exports.Header = require('./header');
 module.exports.Section = require('./section');
 module.exports.Service = require('./service');
 module.exports.Social = require('./social');
+module.exports.Country = require('./country');
+module.exports.Template = require('./template');
+module.exports.TemplateSection = require('./templateSection');
+module.exports.Question = require('./question');
