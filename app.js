@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(cors())
 app.use(routes)
 
+// setup for upload images
+app.use('/public', express.static('public'));
 
 app.listen(port, function () {
     console.log(`Express server listening on port ${port}`)

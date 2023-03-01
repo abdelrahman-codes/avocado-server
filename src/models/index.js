@@ -7,3 +7,4 @@ module.exports.Country = require('./country');
 module.exports.Template = require('./template');
 module.exports.TemplateSection = require('./templateSection');
 module.exports.Question = require('./question');
+module.exports.Request = require('./request');

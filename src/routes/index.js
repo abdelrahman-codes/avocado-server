@@ -13,6 +13,7 @@ const countryRoutes = require('./country');
 const templateRoutes = require('./template');
 const templateSectionRoutes = require('./templateSection');
 const questionRoutes = require('./question');
+const requestRoutes = require('./request');
 
 router.use('/header', headerRoutes);
 router.use('/section', sectionRoutes);
@@ -24,5 +25,6 @@ router.use('/country', countryRoutes);
 router.use('/template', templateRoutes);
 router.use('/template/section', templateSectionRoutes);
 router.use('/question', questionRoutes);
+router.use('/request', requestRoutes);
 
 module.exports = router;
