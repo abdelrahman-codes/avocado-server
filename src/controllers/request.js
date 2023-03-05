@@ -85,6 +85,21 @@ const getRequests = async (req, res) => {
 
 }
 
+const getRequestDetails = async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const request = await Request.findOne({ _id });
+        if (request)
+            res.status(200).json({ request })
+        else
+            res.status(404).json({ message: 'Request not found' })
+
+    } catch (error) {
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+
+}
+
 
 const deleteRequest = async (req, res) => {
     try {
@@ -110,4 +125,5 @@ module.exports = {
     uploadFiles,
     getRequests,
     deleteRequest,
+    getRequestDetails,
 }
