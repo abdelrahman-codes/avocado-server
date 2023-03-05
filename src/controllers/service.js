@@ -50,10 +50,24 @@ const deleteService = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" })
     }
 }
+const getOneService = async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const service = await Service.findOne({ _id });
+        if (service)
+            res.status(200).json({ service })
+        else
+            res.status(404).json({ message: "Not Found" })
+
+    } catch (error) {
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}
 
 module.exports = {
     addService,
     getService,
     updateService,
     deleteService,
+    getOneService
 }

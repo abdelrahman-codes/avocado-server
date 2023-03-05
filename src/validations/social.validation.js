@@ -8,6 +8,7 @@ const addSocialValidation = {
         linkedin: Joi.string().required(),
         phone: Joi.string().required(),
         location: Joi.string().required(),
+        email: Joi.string().required(),
         pic: Joi.string().required(),
     })
 };
@@ -21,6 +22,7 @@ const updateSocialValidation = {
         linkedin: Joi.string().optional(),
         phone: Joi.string().optional(),
         location: Joi.string().optional(),
+        email: Joi.string().optional(),
     })
 };
 
