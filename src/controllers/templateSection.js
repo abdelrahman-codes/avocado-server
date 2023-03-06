@@ -5,7 +5,13 @@ const addTemplateSection = async (req, res) => {
     try {
         const templateSection = new TemplateSection(req.body);
         await templateSection.save();
-        res.status(200).json({ message: "saved successfully" })
+        if (templateSection) {
+            const sections = await TemplateSection.find({ template: templateSection.template });
+            res.status(200).json({ templateSection: sections })
+        } else {
+            const sections = await TemplateSection.find({ template: templateSection.template });
+            res.status(200).json({ templateSection: sections })
+        }
 
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
@@ -13,7 +19,8 @@ const addTemplateSection = async (req, res) => {
 }
 const getTemplateSection = async (req, res) => {
     try {
-        const templateSection = await TemplateSection.find().populate("template");
+        const { template } = req.params;
+        const templateSection = await TemplateSection.find({ template });
         res.status(200).json({ templateSection })
 
     } catch (error) {
@@ -41,10 +48,11 @@ const deleteTemplateSection = async (req, res) => {
         const { _id } = req.params;
         const templateSection = await TemplateSection.findOneAndRemove({ _id });
         if (templateSection) {
-            res.status(200).json({ message: "Deleted" })
-        }
-        else {
-            res.status(404).json({ error: "Not Found" })
+            const sections = await TemplateSection.find({ template: templateSection.template });
+            res.status(200).json({ templateSection: sections })
+        } else {
+            const sections = await TemplateSection.find({ template: templateSection.template });
+            res.status(200).json({ templateSection: sections })
         }
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })

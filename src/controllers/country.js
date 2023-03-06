@@ -71,7 +71,13 @@ const addCountry = async (req, res) => {
     try {
         const country = new Country(req.body);
         await country.save();
-        res.status(200).json({ message: "saved successfully" })
+        if (country) {
+            const countrys = await Country.find();
+            res.status(200).json({ country: countrys })
+        } else {
+            const countrys = await Country.find();
+            res.status(200).json({ country: countrys })
+        }
 
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
