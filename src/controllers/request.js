@@ -65,12 +65,16 @@ function deletefiles(file) {
 
 const addRequest = async (req, res) => {
     try {
-        const request = new Request(req.body);
+
+        let { details,name ,companyName,country,companyType,files} = req.body;
+        details = JSON.parse(details)
+        const request = new Request({ details,name ,companyName,country,companyType,files});
         await request.save();
         res.status(200).json({ message: "saved successfully" })
 
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
+        console.error(error)
     }
 }
 
