@@ -71,7 +71,14 @@ const addSection = async (req, res) => {
     try {
         const section = new Section(req.body);
         await section.save();
-        res.status(200).json({ message: "saved successfully" })
+
+        if (section) {
+            const sections = await Section.find({});
+            res.status(200).json({ section: sections })
+        } else {
+            const sections = await section.find();
+            res.status(200).json({ section: sections })
+        }
 
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
@@ -108,10 +115,12 @@ const deleteSection = async (req, res) => {
         const section = await Section.findOneAndRemove({ _id });
         if (section) {
             deletePhoto(section.pic)
-            res.status(200).json({ message: "Deleted" })
+            const sections = await Section.find({});
+            res.status(200).json({ section: sections })
         }
         else {
-            res.status(404).json({ error: "Not Found" })
+            const sections = await Section.find({});
+            res.status(200).json({ section: sections })
         }
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
