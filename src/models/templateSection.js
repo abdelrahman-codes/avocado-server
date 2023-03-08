@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const templateSectionSchema = new mongoose.Schema(
     {
         title: { type: String, trim: true, required: true, },
+        titleAr: { type: String, trim: true, required: true, },
         template: { type: mongoose.Types.ObjectId, ref: "Template", required: true, },
     },
     {

@@ -9,7 +9,7 @@ const addSocialValidation = {
         phone: Joi.string().required(),
         location: Joi.string().required(),
         email: Joi.string().required(),
-        pic: Joi.string().required(),
+        map: Joi.string().required(),
     })
 };
 
@@ -23,6 +23,8 @@ const updateSocialValidation = {
         phone: Joi.string().optional(),
         location: Joi.string().optional(),
         email: Joi.string().optional(),
+        map: Joi.string().optional(),
+
     })
 };
 

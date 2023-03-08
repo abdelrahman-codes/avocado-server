@@ -4,6 +4,7 @@ const headerSchema = new mongoose.Schema(
     {
         youtubeId: { type: String, trim: true, },
         slogan: { type: String, trim: true, },
+        sloganAr: { type: String, trim: true, },
     },
     {
         timestamps: true

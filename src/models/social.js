@@ -10,7 +10,7 @@ const socialSchema = new mongoose.Schema(
         email: { type: String, trim: true },
         phone: { type: String, trim: true },
         location: { type: String, trim: true },
-        pic: { type: String, trim: true },
+        map: { type: String, trim: true },
     },
     {
         timestamps: true
