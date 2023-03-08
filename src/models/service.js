@@ -6,7 +6,12 @@ const serviceSchema = new mongoose.Schema(
             type: String,
             trim: true,
         },
-        desc: { type: String, trim: true }
+        titleAr: {
+            type: String,
+            trim: true,
+        },
+        desc: { type: String, trim: true },
+        descAr: { type: String, trim: true },
     },
     {
         timestamps: true

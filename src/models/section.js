@@ -4,7 +4,9 @@ const sectionSchema = new mongoose.Schema(
     {
         pic: { type: String, trim: true, required: true, },
         title: { type: String, trim: true, required: true, },
+        titleAr: { type: String, trim: true, required: true, },
         desc: { type: String, trim: true, required: true, },
+        descAr: { type: String, trim: true, required: true, },
     },
     {
         timestamps: true

@@ -5,7 +5,13 @@ const addService = async (req, res) => {
     try {
         const service = new Service(req.body);
         await service.save();
-        res.status(200).json({ message: "saved successfully" })
+        if (service) {
+            const services = await Service.find({});
+            res.status(200).json({ service: services })
+        } else {
+            const services = await Service.find({});
+            res.status(200).json({ service: services })
+        }
 
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
@@ -41,10 +47,11 @@ const deleteService = async (req, res) => {
         const { _id } = req.params;
         const service = await Service.findOneAndRemove({ _id });
         if (service) {
-            res.status(200).json({ message: "Deleted" })
-        }
-        else {
-            res.status(404).json({ error: "Not Found" })
+            const services = await Service.find({});
+            res.status(200).json({ service: services })
+        } else {
+            const services = await Service.find({});
+            res.status(200).json({ service: services })
         }
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" })
