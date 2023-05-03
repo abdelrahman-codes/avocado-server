@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const validation = require('../../../server-build/src/middlewares/validation');
+const validation = require('../middlewares/validation');
 const { addHeader, getHeader, updateHeader, deleteHeader } = require('../controllers/header');
 const { addHeaderValidation, updateHeaderValidation } = require('../validations/header.validation');
 

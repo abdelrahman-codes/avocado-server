@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const validation = require('../../../server-build/src/middlewares/validation');
+const validation = require('../middlewares/validation');
 const { addTemplateSection, updateTemplateSection, deleteTemplateSection, getTemplateSection } = require('../controllers/templateSection');
 const { addSectionValidation, updateSectionValidation } = require('../validations/templateSection.validation');
 

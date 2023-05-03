@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const validation = require('../../../server-build/src/middlewares/validation');
+const validation = require('../middlewares/validation');
 const { addQuestion, getQuestion, updateQuestion, deleteQuestion } = require('../controllers/question');
 const { addQuestionValidation, updateQuestionValidation } = require('../validations/question.validation');
 

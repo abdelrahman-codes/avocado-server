@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const validation = require('../../../server-build/src/middlewares/validation');
+const validation = require('../middlewares/validation');
 const { addTemplate, getTemplate, updateTemplate, deleteTemplate,getOneTemplate } = require('../controllers/template');
 const { addTemplateValidation, updateTemplateValidation } = require('../validations/template.validation');
 
